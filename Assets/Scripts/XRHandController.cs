@@ -12,6 +12,7 @@ public enum HandType
 public class XRHandController : MonoBehaviour
 {
     [SerializeField] private HandType handType;
+    [SerializeField] private float thumbMoveSpeed;
     private Animator animator;
     private InputDevice inputDevice;
     private float indexValue;
@@ -53,10 +54,23 @@ public class XRHandController : MonoBehaviour
     {
         inputDevice.TryGetFeatureValue(CommonUsages.trigger, out indexValue);
         inputDevice.TryGetFeatureValue(CommonUsages.grip, out threeFingersValue);
-        
-        
+
+        inputDevice.TryGetFeatureValue(CommonUsages.primaryTouch, out bool primaryTouched);
+        inputDevice.TryGetFeatureValue(CommonUsages.secondaryTouch, out bool secondaryTouched);
+
+        if (primaryTouched || secondaryTouched)
+        {
+            thumbValue += thumbMoveSpeed;
+        }
+        else
+        {
+            thumbValue -= thumbMoveSpeed;
+        }
+
+        thumbValue = Mathf.Clamp(thumbValue, 0, 1);
         
         animator.SetFloat("Index", indexValue);
         animator.SetFloat("ThreeFingers", threeFingersValue);
+        animator.SetFloat("Thumb", thumbValue);
     }
 }
