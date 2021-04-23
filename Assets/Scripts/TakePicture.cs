@@ -18,7 +18,7 @@ public class TakePicture : MonoBehaviour
         
     }
 
-    public void Shoot()
+    public void ShootActivate()
     {
         light.SetActive(true);
         /*Camera Cam = GetComponent<Camera>();
@@ -38,6 +38,10 @@ public class TakePicture : MonoBehaviour
  
         File.WriteAllBytes(Application.dataPath + "/CluePhotos/" + FileCounter + ".png", Bytes);
         FileCounter++;*/
+    }
+
+    public void ShootDeactivate()
+    {
         light.SetActive(false);
     }
 }

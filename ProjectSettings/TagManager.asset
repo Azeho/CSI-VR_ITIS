@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Photo Camera
+  - Brush
   layers:
   - Default
   - TransparentFX

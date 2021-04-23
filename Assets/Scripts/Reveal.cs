@@ -4,13 +4,13 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class Reveal : MonoBehaviour
 {
-    [SerializeField] Material Mat;
-    [SerializeField] Light SpotLight;
+    public Material Mat;
+    public Light SpotLight;
 	
 	void Update ()
     {
-        Mat.SetVector("MyLightPosition",  SpotLight.transform.position);
-        Mat.SetVector("MyLightDirection", -SpotLight.transform.forward );
-        Mat.SetFloat ("MyLightAngle", SpotLight.spotAngle         );
+        Mat.SetVector("_LightPosition",  SpotLight.transform.position);
+        Mat.SetVector("_LightDirection", -SpotLight.transform.forward );
+        Mat.SetFloat ("_LightAngle", SpotLight.spotAngle);
     }//Update() end
 }//class end
