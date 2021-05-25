@@ -11,7 +11,7 @@ public class TakePicture : MonoBehaviour
 
     [SerializeField] private int resWidth = 1920;
     [SerializeField] private int resHeight = 1080;
-    public int FileCounter = 0;
+    private int FileCounter = 0;
 
 
     private Camera myCamera;
@@ -19,7 +19,7 @@ public class TakePicture : MonoBehaviour
 
     private void Awake()
     {
-        myCamera = gameObject.GetComponent<Camera>();
+        myCamera = gameObject.GetComponentInChildren<Camera>();
     }
 
     private void OnPostRender()
