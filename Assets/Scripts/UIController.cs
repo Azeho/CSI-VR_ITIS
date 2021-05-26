@@ -4,11 +4,12 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class UIController : MonoBehaviour
 {
     public static string PlayerName;
-    private StringBuilder playerNameBuilder;
+    private StringBuilder playerNameBuilder = new StringBuilder("", 12);
     [SerializeField] private TextMeshProUGUI displayName;
     [SerializeField] private TextMeshProUGUI UIName;
     [SerializeField] private GameObject maxCharactersCountError;
@@ -16,7 +17,13 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject playerUI;
     [SerializeField] private GameObject VRRig;
     [SerializeField] private GameObject menuUI;
-    
+    [SerializeField] private GameObject leftHandUI;
+    [SerializeField] private GameObject rightHandUI;
+    [SerializeField] private GameObject leftHand;
+    [SerializeField] private GameObject rightHand;
+    [SerializeField] private MovementProvider movementProvider;
+    [SerializeField] private SnapTurnProviderBase snapTurnProvider;
+
     void Update()
     {
         PlayerName = playerNameBuilder.ToString();
@@ -26,7 +33,7 @@ public class UIController : MonoBehaviour
 
     public void ChangeName(TextMeshProUGUI inputButton)
     {
-        if (playerNameBuilder.Length <= 16)
+        if (playerNameBuilder.Length < 12)
             playerNameBuilder.Append(inputButton.text);
         else
         {
@@ -42,8 +49,14 @@ public class UIController : MonoBehaviour
         {
             menuUI.SetActive(false);
             playerUI.SetActive(true);
+            leftHandUI.SetActive(false);
+            rightHandUI.SetActive(false);
+            leftHand.SetActive(true);
+            rightHand.SetActive(true);
+            VRRig.GetComponent<MovementProvider>().enabled = true;
+            VRRig.GetComponent<SnapTurnProviderBase>().enabled = true;
             VRRig.gameObject.transform.position = new Vector3(2, 0, -9);
-            VRRig.gameObject.transform.Rotate(0f, 200f, 0f, Space.World);
+            VRRig.gameObject.transform.Rotate(0f, 110f, 0f, Space.World);
         }
         else
         {
