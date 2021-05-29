@@ -8,6 +8,9 @@ TagManager:
   - Brush
   - Fingerprint
   - VRRig
+  - Camera
+  - Torch
+  - BrushObject
   layers:
   - Default
   - TransparentFX

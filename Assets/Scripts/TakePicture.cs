@@ -17,7 +17,7 @@ public class TakePicture : MonoBehaviour
     private Camera myCamera;
     private bool takeScreenshotOnNextFrame;
 
-    private void Awake()
+    /*private void Awake()
     {
         myCamera = gameObject.GetComponentInChildren<Camera>();
     }
@@ -39,12 +39,12 @@ public class TakePicture : MonoBehaviour
         
         RenderTexture.ReleaseTemporary(renderTexture);
         myCamera.targetTexture = null;
-    }
+    }*/
 
     public void ShootActivate()
     {
         light.SetActive(true);
-        TakeScreenshot(resWidth, resHeight);
+        /*TakeScreenshot(resWidth, resHeight);*/
     }
 
     public void ShootDeactivate()
@@ -52,9 +52,9 @@ public class TakePicture : MonoBehaviour
         light.SetActive(false);
     }
 
-    private void TakeScreenshot(int width, int height)
+    /*private void TakeScreenshot(int width, int height)
     {
         myCamera.targetTexture = RenderTexture.GetTemporary(width, height, 16);
         takeScreenshotOnNextFrame = true;
-    }
+    }*/
 }
