@@ -12,10 +12,16 @@ public class TakePicture : MonoBehaviour
     [SerializeField] private int resWidth = 1920;
     [SerializeField] private int resHeight = 1080;
     private int FileCounter = 0;
+    private AudioSource flashSound;
 
 
     private Camera myCamera;
     private bool takeScreenshotOnNextFrame;
+
+    private void Start()
+    {
+        flashSound = GetComponent<AudioSource>();
+    }
 
     /*private void Awake()
     {
@@ -44,6 +50,7 @@ public class TakePicture : MonoBehaviour
     public void ShootActivate()
     {
         light.SetActive(true);
+        flashSound.PlayOneShot(flashSound.clip, 0.1f);
         /*TakeScreenshot(resWidth, resHeight);*/
     }
 

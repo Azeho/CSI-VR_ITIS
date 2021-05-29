@@ -23,6 +23,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject rightHand;
     [SerializeField] private MovementProvider movementProvider;
     [SerializeField] private SnapTurnProviderBase snapTurnProvider;
+    [SerializeField] private AudioSource startGameSound;
 
     void Update()
     {
@@ -57,6 +58,7 @@ public class UIController : MonoBehaviour
             VRRig.GetComponent<SnapTurnProviderBase>().enabled = true;
             VRRig.gameObject.transform.position = new Vector3(2, 0, -9);
             VRRig.gameObject.transform.Rotate(0f, 110f, 0f, Space.World);
+            startGameSound.PlayOneShot(startGameSound.clip, 0.5f);
         }
         else
         {
