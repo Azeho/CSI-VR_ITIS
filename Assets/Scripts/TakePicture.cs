@@ -20,38 +20,14 @@ public class TakePicture : MonoBehaviour
 
     private void Start()
     {
-        flashSound = GetComponent<AudioSource>();
+        flashSound = GetComponentInParent<AudioSource>();
     }
-
-    /*private void Awake()
-    {
-        myCamera = gameObject.GetComponentInChildren<Camera>();
-    }
-
-    private void OnPostRender()
-    {
-        if (takeScreenshotOnNextFrame)
-            takeScreenshotOnNextFrame = false;
-
-        RenderTexture renderTexture = myCamera.targetTexture;
-        Texture2D renderResult = 
-            new Texture2D(renderTexture.height, renderTexture.width, TextureFormat.ARGB32, false);
-        Rect rect = new Rect(0, 0, renderTexture.width, renderTexture.height);
-        renderResult.ReadPixels(rect, 0, 0);
-
-        byte[] byteArray = renderResult.EncodeToJPG();
-        System.IO.File.WriteAllBytes(Application.dataPath + "/CameraScreenshot" + $"{FileCounter}" + ".png", byteArray);
-        FileCounter++;
-        
-        RenderTexture.ReleaseTemporary(renderTexture);
-        myCamera.targetTexture = null;
-    }*/
 
     public void ShootActivate()
     {
         light.SetActive(true);
         flashSound.PlayOneShot(flashSound.clip, 0.1f);
-        /*TakeScreenshot(resWidth, resHeight);*/
+        CamCapture();
     }
 
     public void ShootDeactivate()
@@ -59,9 +35,24 @@ public class TakePicture : MonoBehaviour
         light.SetActive(false);
     }
 
-    /*private void TakeScreenshot(int width, int height)
+    void CamCapture()
     {
-        myCamera.targetTexture = RenderTexture.GetTemporary(width, height, 16);
-        takeScreenshotOnNextFrame = true;
-    }*/
+        Camera Cam = GetComponent<Camera>();
+ 
+        RenderTexture currentRT = RenderTexture.active;
+        RenderTexture.active = Cam.targetTexture;
+ 
+        Cam.Render();
+ 
+        Texture2D Image = new Texture2D(Cam.targetTexture.width, Cam.targetTexture.height);
+        Image.ReadPixels(new Rect(0, 0, Cam.targetTexture.width, Cam.targetTexture.height), 0, 0);
+        Image.Apply();
+        RenderTexture.active = currentRT;
+ 
+        var Bytes = Image.EncodeToPNG();
+        Destroy(Image);
+ 
+        File.WriteAllBytes(Application.dataPath + "/Backgrounds/" + FileCounter + ".png", Bytes);
+        FileCounter++;
+    }
 }

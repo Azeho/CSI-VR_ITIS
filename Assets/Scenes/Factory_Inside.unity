@@ -23,9 +23,9 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 1.6
   m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SubtractiveShadowColor: {r: 0.6544144, g: 0.69882184, b: 0.8113208, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: af2a35866ce610a44aebd2f1d51f41c7, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -35,10 +35,10 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 1
+  m_ReflectionIntensity: 0.5
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.055602226, g: 0.092940785, b: 0.1476003, a: 1}
+  m_IndirectSpecularColor: {r: 0.027801113, g: 0.046470392, b: 0.07380015, a: 0.5}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5416,7 +5416,7 @@ MonoBehaviour:
   m_OnActivate:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1951365680155399}
+      - m_Target: {fileID: 916206374355228948}
         m_TargetAssemblyTypeName: TakePicture, Assembly-CSharp
         m_MethodName: ShootActivate
         m_Mode: 1
@@ -5431,7 +5431,7 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1951365680155399}
+      - m_Target: {fileID: 916206374355228948}
         m_TargetAssemblyTypeName: TakePicture, Assembly-CSharp
         m_MethodName: ShootDeactivate
         m_Mode: 1
@@ -20093,6 +20093,7 @@ GameObject:
   m_Component:
   - component: {fileID: 851883747870044900}
   - component: {fileID: 1682755835678282271}
+  - component: {fileID: 916206374355228948}
   m_Layer: 6
   m_Name: Camera
   m_TagString: Photo Camera
@@ -20100,6 +20101,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &916206374355228948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916206374355228947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a67c671f9163539478e96e36a74597e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  light: {fileID: 6247461900075858761}
+  resWidth: 1920
+  resHeight: 1080
 --- !u!4 &988851394103674244
 Transform:
   m_ObjectHideFlags: 0
