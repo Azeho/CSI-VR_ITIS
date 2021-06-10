@@ -52,7 +52,7 @@ public class TakePicture : MonoBehaviour
         var Bytes = Image.EncodeToPNG();
         Destroy(Image);
  
-        File.WriteAllBytes(Application.dataPath + "/Backgrounds/" + FileCounter + ".png", Bytes);
+        File.WriteAllBytes(Application.dataPath + "/Resources/" + FileCounter + ".png", Bytes);
         FileCounter++;
     }
 }
